@@ -10,8 +10,7 @@ const aboutContent = "Hi,\nI am Rahul R Mahawar.\nAndroid/Fullstack Web Develope
 const contactContent = "Rahul R Mahawar.\nEmail: rahul.mahawar.img@gmail.com";
 
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb://localhost:27017/blogDB",
-  { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://admin-rahul:cullen000@cluster0.mhrmtrf.mongodb.net/blogDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const app = express();
 
@@ -75,7 +74,12 @@ app.get("/posts/:postId", function (req, res) {
   });
 });
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
-app.listen(3000, function () {
-  console.log("Server started on port 3000");
+
+app.listen(port, function () {
+  console.log("Server started on " + port);
 });
